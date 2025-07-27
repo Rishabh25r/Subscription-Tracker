@@ -16,7 +16,7 @@ export const getUser = async (req, res , next) => {
 
         if(!user){
             const error = new Error('User not found');
-            error.status = 404;
+            error.statusCode = 404;
             throw error;
         }
 

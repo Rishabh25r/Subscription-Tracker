@@ -5,8 +5,8 @@ const subscriptionSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Subscription name is required'],
     trim: true,
-    minlength: [3, 'Subscription name must be at least 3 characters long'],
-    maxlength: [100, 'Subscription name must be at most 50 characters long']
+    minLength: [3, 'Subscription name must be at least 3 characters long'],
+    maxLength: [100, 'Subscription name must be at most 50 characters long']
  },
  price:{
     type: Number,
@@ -29,7 +29,7 @@ category:{
 },
 paymentMethod:{
     type: String,
-    enum: ['Credit Card', 'Debit Card', 'Paypal', 'Bank Transfer' , 'UPI', 'Crypto' , 'Other'],
+    // enum: ['Credit Card', 'Debit Card', 'Paypal', 'Bank Transfer' , 'UPI', 'Crypto' , 'Other'],
     required: [true, 'Payment method is required'],
     trim: true,
 },
@@ -50,7 +50,7 @@ renewalDate:{
     type: Date,
     validate:{
         validator: function(value){
-            return value >= this.startDate;
+            return value > this.startDate;
         },
         message: 'Renewal date must be after the start date'
     }

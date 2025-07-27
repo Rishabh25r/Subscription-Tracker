@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import {createRequire} from 'module';
 const require = createRequire(import.meta.url);
-const { serve } = require('@upstash/workflow/express');
+const { serve } = require("@upstash/workflow/express");
 
 import Subscription from '../models/subscription.model.js';
 import { sendReminderEmail } from '../utils/send-email.js';
@@ -9,7 +9,6 @@ import { sendReminderEmail } from '../utils/send-email.js';
 const REMINDERS = [7, 5 , 2 ,1];
 
 export const sendReminders = serve(async (context)=>{
-    try{
     const {subscriptionId} = context.requestPayload; 
     const subscription = await fetchSubscription(context, subscriptionId);
 
@@ -32,10 +31,6 @@ export const sendReminders = serve(async (context)=>{
         }
         
     }
-} catch (error) {
-    console.error("Workflow Error:", error);
-        throw error;
-}
 });
 
 const fetchSubscription = async (context, subscriptionId) => {

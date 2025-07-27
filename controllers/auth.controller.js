@@ -23,10 +23,10 @@ export const signUp = async (req, res, next) => {
 
         //Hash the password
         const salt = await bcrypt.genSalt(10);
-        const hashedPssword = await bcrypt.hash(password, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newUser = await User.create([{name , email , password:hashedPssword}] , {session});
-        const token = jwt.sign({userId: newUser[0]._id}, JWT_SECRET , {expiresIn: JWT_EXPIRES_IN});
+        const newUsers = await User.create([{name , email , password:hashedPassword}] , {session});
+        const token = jwt.sign({userId: newUsers[0]._id}, JWT_SECRET , {expiresIn: JWT_EXPIRES_IN});
 
 
         await session.commitTransaction();
@@ -37,7 +37,7 @@ export const signUp = async (req, res, next) => {
             message: 'User Created Successfully',
             data:{
                 token ,
-                user: newUser[0]
+                user: newUsers[0]
             }
 
         })
@@ -84,4 +84,4 @@ export const signIn = async (req, res, next) => {
     }
 }
 
-// export const signOut = async (req, res, next) => {}
+export const signOut = async (req, res, next) => {}

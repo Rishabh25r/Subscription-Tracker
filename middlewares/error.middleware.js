@@ -5,7 +5,7 @@ const errorMiddleware = (err, req, res, next) => {
         console.error('Error:', error);
 
         //Mongoose bad objectId error
-        if(err.name=== ' CastError'){
+        if(err.name === 'CastError'){
             const message = 'Resource not found';
             error = new Error(message);
             error.statusCode = 404;

@@ -8,7 +8,7 @@ const arcjetMiddleware = async (req , res , next) => {
         if (NODE_ENV === 'development') {
             return next();
         }
-        const decision = await aj.protect(req  , {requested : 1});
+        const decision = await aj.protect(req  , { requested: 1 });
 
         if(decision.isDenied()){
             if(decision.reason.isRateLimit()){
