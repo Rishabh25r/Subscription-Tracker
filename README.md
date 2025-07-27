@@ -1,4 +1,4 @@
-# Subscription-Tracker
+# Subscription-Tracker-API
 
 A backend web application designed to help users track their subscriptions and receive automated reminder emails before upcoming renewal dates. This API makes it easy to stay informed about upcoming payments, so you can plan ahead or cancel a subscription before it renews.
 
