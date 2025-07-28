@@ -131,11 +131,75 @@ npm install
 npm start
 ```
 
+____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 
+## 🔗 API Routes
+
+### After Installation – How to Use the API
+
+After installing the packages and starting the server (npm start), open any HTTP client (e.g., Postman, Thunder Client, Insomnia, HTTPie, etc.) and use the following routes:
+
+### -> Authentication Routes:
+1. Register (Sign-up)
+   
+   POST `http://localhost:<port-number/api/v1/auth/sign-up` (replace <port-number> with your defined port numer)
+```
+    json:
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "123456"
+}
+```
+
+2. Login (Sign-in)
+  
+   POST  `http://localhost:<port-number/api/v1/auth/sign-up`
+  ```
+  json:
+{
+  "email": "john@example.com",
+  "password": "123456"
+}
+
+```
+
+### -> User Routes
+
+Get a User by ID
+
+GET `http://localhost:<port-number/api/v1/users/:id` 
+
+   -Protected (requires Authorization: Bearer <token>
+   -Replace id with User id
+   -Returns details of a specific user.
 
 
+### -> Subscription Routes
 
+1. Create a Subscription
+   POST  `http://localhost:<port-number/api/v1/subscriptions`
 
+   ```
+   json:
+   {
+    "name": "Netflix",
+    "price": 500,
+    "currency": "INR",
+    "frequency": "monthly",
+    "category": "entertainment",
+    "paymentMethod": "UPI",
+    "status": "active",
+    "startDate": "2025-07-01T00:00:00.000Z",
+    "renewalDate": "2025-08-01T00:00:00.000Z",
+   }
+   ```
+2. Get Subscription for a User
+   GET `http://localhost:<port-number/api/v1/subscriptions/user/:id`
+
+  -Replace :id with the user’s ID.
+
+  -Returns all subscriptions associated with that user.
 
 
